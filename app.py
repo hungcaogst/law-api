@@ -10,18 +10,15 @@ from pinecone import Pinecone
 load_dotenv()
 API_ENDPOINT = os.getenv("API_ENDPOINT")                 # Azure OpenAI endpoint
 LLM_MODEL_NAME = os.getenv("LLM_MODEL_NAME")
-LLM_API_KEY = os.getenv("LLM_API_KEY")
 EMBEDDING_MODEL_NAME = os.getenv("EMBEDDING_MODEL_NAME")
 LLM_API_KEY = os.getenv("LLM_API_KEY")
-EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY")
+OPENAI_API_KEY = os.getenv("EMBEDDING_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
 # Init clients
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
-embedding_client = OpenAI(
-    api_key=EMBEDDING_API_KEY,
-)
+embedding_client = OpenAI()
 
 index_name = "nd100-index"
 index = pc.Index(index_name)
