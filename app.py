@@ -23,10 +23,6 @@ embedding_client = OpenAI(
     api_key=EMBEDDING_API_KEY,
 )
 
-llm_client = OpenAI(
-    api_key=LLM_API_KEY,
-)
-
 index_name = "nd100-index"
 index = pc.Index(index_name)
 
