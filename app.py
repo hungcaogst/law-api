@@ -20,12 +20,10 @@ PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
 embedding_client = OpenAI(
-    azure_endpoint=API_ENDPOINT,
     api_key=EMBEDDING_API_KEY,
 )
 
 llm_client = OpenAI(
-    azure_endpoint=API_ENDPOINT,
     api_key=LLM_API_KEY,
 )
 
