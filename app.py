@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
-from openai import AzureOpenAI
+from openai import OpenAI
 from pinecone import Pinecone
 
 # Load env
@@ -19,13 +19,13 @@ PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 # Init clients
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
-embedding_client = AzureOpenAI(
+embedding_client = OpenAI(
     api_version="2024-07-01-preview",
     azure_endpoint=API_ENDPOINT,
     api_key=EMBEDDING_API_KEY,
 )
 
-llm_client = AzureOpenAI(
+llm_client = OpenAI(
     api_version="2024-07-01-preview",
     azure_endpoint=API_ENDPOINT,
     api_key=LLM_API_KEY,
@@ -44,7 +44,7 @@ class QueryRequest(BaseModel):
 def search_law(req: QueryRequest):
     # 1. Tạo embedding cho câu hỏi
     embedding = embedding_client.embeddings.create(
-        model="text-embedding-3-small",
+        model=EMBEDDING_MODEL_NAME,
         input=req.query
     ).data[0].embedding
 
