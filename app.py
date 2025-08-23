@@ -18,7 +18,7 @@ PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 # Init clients
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
-embedding_client = OpenAI()
+embedding_client = OpenAI(api_key=OPENAI_API_KEY) 
 
 index_name = "nd100-index"
 index = pc.Index(index_name)
