@@ -43,7 +43,7 @@ def search_law(req: QueryRequest):
         top_k=req.top_k,
         include_metadata=True
     )
-
+    #here
     # 3. Chuẩn bị dữ liệu trả về
     response = [
         {
